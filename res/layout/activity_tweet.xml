@@ -9,17 +9,34 @@
   android:paddingRight="@dimen/activity_horizontal_margin"
   android:paddingTop="@dimen/activity_vertical_margin"
   tools:context=".TweetActivity" >
+  
   <!-- Title TextView-->
   <TextView android:layout_width="match_parent"
     android:layout_height="wrap_content" android:gravity="center"
     android:textSize="30sp"
     android:layout_margin="10dp" android:text="@string/title_tweet"/>
   <!-- Status EditText  -->
+
+  <EditText
+      android:id="@+id/remainingCharacters"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:gravity="right|center_vertical"
+      android:inputType="numberSigned"
+      android:text="" >
+  </EditText>
+
   <EditText android:layout_width="match_parent"
-    android:layout_height="0dp" android:layout_weight="1"
-    android:hint="@string/hint_text" android:id="@+id/editText"
-    android:gravity="top|center_horizontal"></EditText>
+    android:layout_height="0dp" 
+    android:layout_weight="1"
+    android:hint="@string/hint_text" 
+    android:id="@+id/editText"
+    android:gravity="top|center_horizontal">
+    <requestFocus />
+  </EditText>
   <!-- Update Button -->
+
   <Button android:layout_width="fill_parent"
     android:layout_height="wrap_content" android:text="@string/button_update"
     android:textSize="20sp" android:id="@+id/buttonTweet"></Button>
