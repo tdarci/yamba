@@ -1,13 +1,9 @@
 package com.frenchfry.yamba;
 
-import winterwell.jtwitter.Twitter;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,28 +14,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class TweetActivity extends Activity implements OnClickListener, TextWatcher, OnSharedPreferenceChangeListener {
+public class TweetActivity extends Activity implements OnClickListener, TextWatcher {
 	
 	public static final String TAG = TweetActivity.class.getSimpleName();
 	public static final Integer MAX_TWEET_LEN = 140;
-	public static final String DEFAULT_API_ROOT = "http://yamba.marakana.com/api";
-//	public static final String DEFAULT_USERNAME = "td";
-//	public static final String DEFAULT_PWD = "2%H&Fy15u#uf";
-//	public static final String DEFAULT_PWD = "doofus";
-	public static final String DEFAULT_USERNAME = "student";
-	public static final String DEFAULT_PWD = "password";
 
 	private EditText editText;
 	private Button goButton;
-	private Twitter twitter;
 	private EditText remainingCharacters;
-	private SharedPreferences prefs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		prefs.registerOnSharedPreferenceChangeListener(this);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tweet);
@@ -53,20 +38,6 @@ public class TweetActivity extends Activity implements OnClickListener, TextWatc
 		editText.addTextChangedListener(this);
 	}
 	
-	@SuppressWarnings("deprecation")
-	private Twitter getTwitter() {
-		if (twitter == null) {
-			String username, password, apiRoot;
-			username = prefs.getString("username", DEFAULT_USERNAME);
-			password = prefs.getString("password", DEFAULT_PWD);
-			apiRoot = prefs.getString("apiRoot", DEFAULT_API_ROOT);
-			Log.d(TAG, "********** Logging in as '" + username + "' with pwd: " + password);
-			twitter = new Twitter(username, password);
-			twitter.setAPIRootUrl(apiRoot);
-		}
-		return twitter;
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -99,7 +70,8 @@ public class TweetActivity extends Activity implements OnClickListener, TextWatc
 	@Override
 	public void onClick(View v) {
 		String tweet = editText.getText().toString();
-		TwitterPoster poster = new TwitterPoster(getTwitter(), getApplicationContext());
+		YambaApplication app = (YambaApplication) getApplication();
+		TwitterPoster poster = new TwitterPoster(app.getTwitter(), getApplicationContext());
 		poster.execute(tweet);
 		editText.setText(null);
 		Log.d(TAG, "Submitted tweet request: " + tweet);
@@ -119,13 +91,6 @@ public class TweetActivity extends Activity implements OnClickListener, TextWatc
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		// do nothing
-	}
-
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-			String key) {
-		Log.d(TAG, "*** OPTIONS CHANGED");
-		twitter = null;
 	}
 
 }
