@@ -7,5 +7,12 @@
     <string name="hint_text">What do you want to say to the world?</string>
     <string name="button_update">Go</string>
     <string name="title_tweet">Be Heard</string>
+    <string name="title_username">Username</string>
+    <string name="summary_username">This is the username.</string>
+    <string name="title_password">Password</string>
+    <string name="summary_password">This is the password.</string>
+    <string name="title_api_root">API Root</string>
+    <string name="summary_api_root">This is the API root.</string>
+    <string name="title_settings">Settings</string>
     
 </resources>
