@@ -18,7 +18,7 @@
     android:textColor="@android:color/white"
     android:layout_margin="10dp" 
     android:background="#f000"
-    android:text="@string/title_tweet"/>
+    android:text="@string/titleTweet"/>
   <!-- Status EditText  -->
 
   <EditText
@@ -35,7 +35,7 @@
   <EditText android:layout_width="match_parent"
     android:layout_height="0dp" 
     android:layout_weight="1"
-    android:hint="@string/hint_text" 
+    android:hint="@string/hintText" 
     android:id="@+id/editText"
     android:background="#dfff"
     android:gravity="top|center_horizontal">
@@ -44,6 +44,6 @@
   <!-- Update Button -->
 
   <Button android:layout_width="fill_parent"
-    android:layout_height="wrap_content" android:text="@string/button_update"
+    android:layout_height="wrap_content" android:text="@string/buttonUpdate"
     android:textSize="20sp" android:id="@+id/buttonTweet"></Button>
 </LinearLayout>

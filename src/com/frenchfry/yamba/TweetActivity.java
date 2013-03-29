@@ -48,8 +48,14 @@ public class TweetActivity extends Activity implements OnClickListener, TextWatc
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.action_settings:
+		case R.id.itemSettings:
 			startActivity(new Intent(this, PrefsActivity.class));
+			break;
+		case R.id.itemServiceStart:
+			startService(new Intent(this, UpdaterService.class));
+			break;
+		case R.id.itemServiceStop:
+			stopService(new Intent(this, UpdaterService.class));
 			break;
 		}
 		return true;
