@@ -32,6 +32,15 @@ public class TweetRepository {
 		Log.d(TAG, "db initialized");
 	}
 	
+	public void delete() {
+		SQLiteDatabase db = this.dbHelper.getWritableDatabase();
+		try {
+			db.delete(TABLE_NAME, null, null);
+		} finally {
+			db.close();
+		}
+	}
+	
 	public void close() {
 		this.dbHelper.close();
 	}
@@ -82,7 +91,7 @@ public class TweetRepository {
 	// ============================================================
 	// nested classes
 	
-	class DbHelper extends SQLiteOpenHelper {
+	public static class DbHelper extends SQLiteOpenHelper {
 		
 		public DbHelper(Context context) {
 			super(context, DB_NAME, null, DB_VERSION);

@@ -1,6 +1,5 @@
 package com.frenchfry.yamba;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class TweetActivity extends Activity implements OnClickListener, TextWatcher {
+public class TweetActivity extends YambaActivity implements OnClickListener, TextWatcher {
 	
 	public static final String TAG = TweetActivity.class.getSimpleName();
 	public static final Integer MAX_TWEET_LEN = 140;
@@ -76,8 +75,7 @@ public class TweetActivity extends Activity implements OnClickListener, TextWatc
 	@Override
 	public void onClick(View v) {
 		String tweet = editText.getText().toString();
-		YambaApplication app = (YambaApplication) getApplication();
-		TwitterPoster poster = new TwitterPoster(app.getTwitter(), getApplicationContext());
+		TwitterPoster poster = new TwitterPoster(this.app.getTwitter(), getApplicationContext());
 		poster.execute(tweet);
 		editText.setText(null);
 		Log.d(TAG, "Submitted tweet request: " + tweet);

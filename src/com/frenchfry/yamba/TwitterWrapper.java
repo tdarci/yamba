@@ -24,14 +24,16 @@ public class TwitterWrapper extends Twitter {
 	@SuppressWarnings("deprecation")
 	@Override
 	public synchronized List<Status> getHomeTimeline() throws TwitterException {
+		final int MAX_COUNT = 10;
 		List<Status> statuses = new ArrayList<Status>();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		for (int counter = 0 ; counter < 10 ; counter++) {
+		cal.add(Calendar.SECOND, (-1 * MAX_COUNT) + 1);
+		for (int counter = 0 ; counter < MAX_COUNT ; counter++) {
 			User user = new User("wookie");
 			int id = idCounter++;
 			String message = String.format(Locale.US, "I like this number... %d", id);
-			cal.add(Calendar.SECOND, -1);
+			cal.add(Calendar.SECOND, 1);
 			Status s = new Status(user, message, id, cal.getTime());
 			statuses.add(s);
 		}

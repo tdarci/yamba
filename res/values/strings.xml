@@ -13,7 +13,14 @@
     <string name="titleApiRoot">API Root</string>
     <string name="summaryApiRoot">This is the API root.</string>
     <string name="titleSettings">Settings</string>
+    <string name="titlePurge">Purge</string>
     <string name="titleServiceStart">Start Updater</string>
     <string name="titleServiceStop">Stop Updater</string>
+    <string name="titleTimeline">Timeline</string>
+    <string name="rowTextUser">Nobody</string>
+    <string name="rowTextCreatedAt">Whenever</string>
+    <string name="rowTextTweet">Tweets to here..</string>
+    <string name="msgSetupPrefs">Set login preferences</string>
+    <string name="msgAllDataPurged">All data purged</string>
     
 </resources>

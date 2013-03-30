@@ -1,11 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/itemTimeline"
+        android:title="@string/titleTimeline" 
+        android:icon="@android:drawable/ic_menu_sort_by_size"/>
+    
+    <item
+        android:id="@+id/itemTweet"
+        android:title="@string/titleTweet" 
+        android:icon="@android:drawable/ic_menu_edit"/>
+    
+    <item
         android:id="@+id/itemSettings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
         android:title="@string/titleSettings" 
         android:icon="@android:drawable/ic_menu_preferences"/>
+    
+    <item
+        android:id="@+id/itemPurge"
+        android:title="@string/titlePurge" 
+        android:icon="@android:drawable/ic_menu_delete"/>
     
     <item
        android:id="@+id/itemServiceStart"

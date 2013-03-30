@@ -32,6 +32,10 @@ public class YambaApplication extends Application implements OnSharedPreferenceC
 		return tweetRepository;
 	}
 	
+	public SharedPreferences getPrefs() {
+		return this.prefs;
+	}
+	
 	public synchronized int fetchTweetUpdates() {
 		Log.d( TAG, "fetching tweets");
 		Twitter twitter = this.getTwitter();

@@ -16,15 +16,13 @@
         android:label="@string/appName"
         android:theme="@style/AppTheme" 
         android:name="YambaApplication">
-        <activity
-            android:name="TweetActivity"
-            android:label="@string/appName" >
+        <activity android:name="TimelineActivity" android:label="@string/titleTimeline">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="TweetActivity" android:label="@string/appName" ></activity>
         <activity android:name="PrefsActivity" android:label="@string/titleSettings"></activity>
         <service android:name="UpdaterService"></service>
     </application>
